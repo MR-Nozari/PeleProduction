@@ -5,7 +5,7 @@
 [submodule "Submodules/PelePhysics"]
 	path = Submodules/PelePhysics
 	url = https://github.com/AMReX-Combustion/PelePhysics.git
-        branch = master
+        branch = development
 [submodule "Submodules/amrex"]
 	path = Submodules/amrex
 	url = https://github.com/AMReX-Codes/amrex.git
@@ -14,3 +14,11 @@
 	path = Submodules/IAMR
 	url = https://github.com/AMReX-Codes/IAMR.git
         branch = master
+[submodule "Submodules/PeleC"]
+	path = Submodules/PeleC
+	url = https://github.com/AMReX-Combustion/PeleC.git
+	branch = Landon/cpp_spray
+[submodule "Submodules/PeleC-MP"]
+	path = Submodules/PeleC-MP
+	url = https://github.com/AMReX-Combustion/PeleC-MP.git
+	branch = cpp_spray
