@@ -1,0 +1,28 @@
+#!/bin/bash
+#BSUB -P CMB138
+#BSUB -W 0:30
+#BSUB -nnodes 8
+#BSUB -J spray_test2
+#BSUB -o spray_test2.%J
+#BSUB -e spray_test2.%J
+###BSUB -alloc_flags "smt1"
+
+module load cuda
+module load gcc
+module list
+set -x
+
+EXE="./PeleC3d.gnu.TPROF.MPI.CUDA.ex"
+
+# RS - resource set
+# This means 1 RS per GPU (best so far)
+JSRUN="jsrun -n48 -r6 -g1 -a1 -c1 -l cpu-cpu -d packed -b packed:1"
+
+INPUTS=input
+# SMPIARGS=
+
+# PAMI_DISABLE_IPC=1
+# SMPIARGS+=" --smpiargs="-disable_gpu_hooks -x PAMI_DISABLE_CUDA_HOOK=1""
+
+date
+${JSRUN} --smpiargs="-gpu" ${EXE} ${INPUTS} >& out.${LSB_JOBID}
