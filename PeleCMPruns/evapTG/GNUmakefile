@@ -35,7 +35,7 @@ USE_EB = FALSE
 Eos_dir := Fuego
 Reactions_dir := Fuego
 Chemistry_Model := decane_3sp
-Transport_dir := Simple
+Transport_dir := Constant
 
 # PeleC-MP
 USE_PARTICLES = TRUE

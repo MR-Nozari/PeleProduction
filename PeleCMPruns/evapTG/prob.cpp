@@ -52,24 +52,21 @@ amrex_probinit(
   amrex::Real massfrac[NUM_SPECIES] = {0.0};
   massfrac[O2_ID] = ProbParm::Y_O2;
   massfrac[N2_ID] = ProbParm::Y_N2;
-  bool get_xi = false;
-  bool get_Ddiag = false;
-  bool get_lambda = false;
-  bool get_mu = true;
   amrex::Real wbar, gamma0;
   EOS::TY2G(ProbParm::T0, massfrac, gamma0);
   EOS::Y2WBAR(massfrac, wbar);
+  EOS::TY2Cp(ProbParm::T0, massfrac, cp);
   // Compute the speed of sound
   cs = std::sqrt(ProbParm::T0 * gamma0 * EOS::RU / wbar);
   amrex::Real refL = ProbParm::L;
   ProbParm::v0 = ProbParm::mach * cs;
-  amrex::Real rho, mu, xi, lambda;
-  amrex::Real Ddiag[NUM_SPECIES]; // Should be unused
-  transport(get_xi, get_mu, get_lambda, get_Ddiag,
-            ProbParm::T0, rho, // Should be unused
-            massfrac, Ddiag, mu, xi, lambda);
+  transport_params::const_bulk_viscosity = 0.0;
+  amrex::Real mu = 4.3311E-4;
+  transport_params::const_viscosity = mu;
+  transport_params::const_conductivity = mu * cp / 0.71;
   // Compute the density from the Reynolds number
   ProbParm::rho0 = ProbParm::reynolds * mu / (refL * ProbParm::v0);
+  transport_params::const_diffusivity = ProbParm::rho0*0.1;
   EOS::RTY2P(ProbParm::T0, ProbParm::rho0, massfrac, ProbParm::p0);
 
   // Output IC
