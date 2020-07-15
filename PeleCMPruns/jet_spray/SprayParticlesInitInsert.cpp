@@ -142,13 +142,13 @@ SprayParticleContainer::injectParticles(Real time,
           p.cpu() = ParallelDescriptor::MyProc();
           Real theta = lo_angle + spray_angle*amrex::Random();
 #if AMREX_SPACEDIM == 3
-          Real phi = lo_angle + spray_angle*amrex::Random();
+          Real theta2 = lo_angle + 2.*M_PI*amrex::Random();
 #else
-          Real phi = 0.;
+          Real theta2 = 0.;
 #endif
-          AMREX_D_TERM(p.rdata(PeleC::pstateVel) = jet_vel*std::sin(theta)*std::cos(phi);,
+          AMREX_D_TERM(p.rdata(PeleC::pstateVel) = jet_vel*std::sin(theta)*std::cos(theta2);,
                        p.rdata(PeleC::pstateVel+1) = jet_vel*std::cos(theta);,
-                       p.rdata(PeleC::pstateVel+2) = jet_vel*std::sin(theta)*std::sin(phi););
+                       p.rdata(PeleC::pstateVel+2) = jet_vel*std::sin(theta)*std::sin(theta2;);
           Real cur_dia = amrex::RandomNormal(log_mean, log_stdev);
           // Use a log normal distribution
           cur_dia = std::exp(cur_dia);
