@@ -1,3 +1,9 @@
+
+PELEC_HOME ?= ../../Submodules/PeleC
+PELE_PHYSICS_HOME ?= ../../Submodules/PelePhysics
+AMREX_HOME ?= ../../Submodules/amrex
+PELEC_MP_HOME ?= ../../Submodules/PeleC-MP
+
 # AMReX
 DIM = 2
 COMP = gnu
