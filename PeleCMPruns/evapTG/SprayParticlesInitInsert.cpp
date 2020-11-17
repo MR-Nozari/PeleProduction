@@ -7,21 +7,28 @@
 using namespace amrex;
 
 bool
-SprayParticleContainer::insertParticles(Real time, Real dt, int nstep, int lev)
+SprayParticleContainer::insertParticles(Real time,
+                                        Real dt,
+                                        int nstep,
+                                        int lev,
+                                        int finest_level)
 {
   return false;
 }
 
 bool
-SprayParticleContainer::injectParticles(Real time, Real dt, int nstep, int lev)
+SprayParticleContainer::injectParticles(Real time,
+                                        Real dt,
+                                        int nstep,
+                                        int lev,
+                                        int finest_level)
 {
   return false;
-} 
+}
 
 void
-SprayParticleContainer::InitSprayParticles(AmrLevel* pelec, const int& lev, const int& num_ppc)
+SprayParticleContainer::InitSprayParticles()
 {
-  const int numGrids = pelec->numGrids();
   Real part_rho = ProbParm::partRho;
   Real part_dia = ProbParm::partDia;
   Real T_ref = ProbParm::partTemp;
