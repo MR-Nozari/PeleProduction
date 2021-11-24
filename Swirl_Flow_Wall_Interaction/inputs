@@ -184,5 +184,3 @@ eb2.small_volfrac                = 1.0e-3
 #eb2.box_hi = 0.01 0.01 0.01 
 #eb2.box_has_fluid_inside = 0
 
-diffuse.use_EBDirichlet = 1
-
