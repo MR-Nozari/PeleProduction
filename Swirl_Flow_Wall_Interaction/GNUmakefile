@@ -1,4 +1,4 @@
-TOP = /scratch/b/bsavard/mrn7575/PeleProduction_26Oct_Feature_DirichletEB
+TOP = ./../.
 PELELM_HOME ?= $(TOP)/Submodules/PeleLM
 PELE_PHYSICS_HOME ?= $(TOP)/Submodules/PelePhysics
 IAMR_HOME ?= $(TOP)/Submodules/IAMR
